@@ -26,6 +26,11 @@ class TeamMember(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     def insert(self, data):
+        """
+        This is used to create new Team member
+        :param data: request Data
+        :return: saved data, http Status
+        """
         data_to_save = self.serialize(data)
         data_existed = TeamMember.objects.filter(
             Q(phone_number=data_to_save['phone_number']) | Q(email=data_to_save['email'])).first()
@@ -38,15 +43,29 @@ class TeamMember(models.Model):
         return data, status
 
     def update_member(self, data):
+        """
+        This is used to update team Member
+        :param data: fields to be updated
+        :return: updated fields
+        """
         serialized_data = self.serialize(data, update=True)
         TeamMember.objects.filter(pk=self.id).update(**serialized_data)
         return data
 
     def remove(self):
+        """
+        Hard deletes the resource from the DB
+        :return: None
+        """
         # TeamMember.objects.filter(id=self.id).update(status=self.Status.INACTIVE)
         TeamMember.objects.filter(id=self.id).delete()
 
     def get_members(self, pk=None):
+        """
+        Data of all the team members
+        :param pk: id of the team member
+        :return: all the data of all team member
+        """
         q = {'status': self.Status.ACTIVE}
         if pk:
             q['id'] = pk
