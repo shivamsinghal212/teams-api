@@ -15,9 +15,9 @@
 
 
 #### Create New Team member 
-`curl -X POST \
-  http://127.0.0.1:8000/team/member/ \
-  -H 'content-type: application/json' \
+`curl -X POST 
+  http://127.0.0.1:8000/team/member/ 
+  -H 'content-type: application/json' 
   -d '{
             "firstName": "Shivam",
             "lastName": "Singhal",
@@ -27,12 +27,12 @@
         }'`
 
 #### Delete Team member 
-`curl -X DELETE \
-  http://127.0.0.1:8000/team/member/10 \
-  -H 'content-type: application/json' \`
+`curl -X DELETE 
+  http://127.0.0.1:8000/team/member/10 
+  -H 'content-type: application/json' `
   
 #### Update Team member
-`curl -X PUT \
-  http://127.0.0.1:8000/team/member/9 \
-  -H 'content-type: application/json' \
+`curl -X PUT 
+  http://127.0.0.1:8000/team/member/9 
+  -H 'content-type: application/json' 
   -d '{"email": "some@test.com"}'`
