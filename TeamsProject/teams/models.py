@@ -92,5 +92,6 @@ class TeamMember(models.Model):
                              'lastName': data.get('last_name'),
                              'phoneNumber': data.get('phone_number'),
                              'email': data.get('email'),
-                             'role': data.get('role')}
+                             'role': data.get('role'),
+                             'id': data.get('id')}
         return deserialized_data
